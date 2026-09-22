@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${bodyFont.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-text">
+    <html lang="en" className={`${bodyFont.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background text-text" suppressHydrationWarning>
         <AppStoreProvider>
           <Header />
           <main className="flex-1">{children}</main>

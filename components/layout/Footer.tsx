@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronDown, ChevronUp, Globe } from "lucide-react";
 import { footerColumns } from "@/data/navigation";
 import { LocationModal } from "@/components/navigation/LocationModal";
+import { Logo } from "@/components/layout/Logo";
 import { cn } from "@/lib/utils";
 
 export function Footer() {
@@ -13,11 +14,11 @@ export function Footer() {
   const [region, setRegion] = useState("United States");
 
   return (
-    <footer className="mt-12 bg-secondary text-white">
+    <footer className="mt-12 bg-header-dark text-white">
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="w-full bg-secondary-hover py-3 text-center text-sm font-medium hover:bg-secondary-hover/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+        className="w-full bg-header-nav-hover py-3 text-center text-sm font-medium hover:bg-header-nav-hover/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
       >
         Back to top
       </button>
@@ -31,7 +32,7 @@ export function Footer() {
                 type="button"
                 onClick={() => setOpenColumn(isOpen ? null : column.title)}
                 aria-expanded={isOpen}
-                className="flex w-full items-center justify-between py-2 text-sm font-semibold sm:pointer-events-none sm:py-0"
+                className="flex w-full items-center justify-between py-2 text-sm font-bold sm:pointer-events-none sm:py-0"
               >
                 {column.title}
                 <span className="sm:hidden">
@@ -52,20 +53,21 @@ export function Footer() {
         })}
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-4 px-4 py-6">
+      <div className="border-t border-white/20">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-4 py-8">
+          <Logo />
           <button
             type="button"
             onClick={() => setRegionOpen(true)}
-            className="flex items-center gap-2 rounded-md border border-white/30 px-3 py-1.5 text-sm hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+            className="flex items-center gap-2 rounded-md border border-white/40 px-3 py-1.5 text-sm hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           >
             <Globe className="h-4 w-4" aria-hidden="true" />
-            {region}
+            English &middot; {region}
           </button>
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-4 py-6 text-center text-xs text-white/60">
+      <div className="border-t border-white/20 px-4 py-6 text-center text-xs text-white/60">
         <div className="mx-auto flex max-w-[1440px] flex-wrap justify-center gap-4 pb-3">
           <Link href="/help" className="hover:underline">Conditions of Use</Link>
           <Link href="/help" className="hover:underline">Privacy Notice</Link>

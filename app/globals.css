@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f2f4f7;
+  --background: #eaeded;
   --surface: #ffffff;
-  --border: #e2e5eb;
-  --text: #14181f;
-  --muted: #5b6472;
-  --primary: #0f7b6c;
-  --primary-hover: #0c6459;
-  --secondary: #1f3a5f;
-  --secondary-hover: #16283f;
-  --danger: #d14343;
-  --success: #1e8e5a;
-  --warning: #b7791f;
+  --border: #d5d9d9;
+  --text: #0f1111;
+  --muted: #565959;
+  --primary: #ff9900;
+  --primary-hover: #e88a00;
+  --secondary: #131921;
+  --secondary-hover: #232f3e;
+  --danger: #c40000;
+  --success: #007600;
+  --warning: #f3a847;
   --focus-ring: #2563eb;
+
+  /* Amazon-style header/footer accent tokens */
+  --header-dark: #131921;
+  --header-nav: #232f3e;
+  --header-nav-hover: #37475a;
+  --accent-gradient-start: #f7dfa5;
+  --accent-gradient-end: #f0c14b;
+  --link: #007185;
+  --link-hover: #c7511f;
 }
 
 @theme inline {
@@ -30,6 +39,11 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-focus-ring: var(--focus-ring);
+  --color-header-dark: var(--header-dark);
+  --color-header-nav: var(--header-nav);
+  --color-header-nav-hover: var(--header-nav-hover);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
   --font-sans: var(--font-body);
 }
 

@@ -24,26 +24,34 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
   {
     title: "Get to Know Us",
     items: [
-      { id: "about", label: "About Nuvara", href: "/help" },
       { id: "careers", label: "Careers", href: "/help" },
-      { id: "sell-landing", label: "Sell on Nuvara", href: "/sell" },
+      { id: "newsletter", label: "Nuvara Newsletter", href: "/help" },
+      { id: "about", label: "About Nuvara", href: "/help" },
+      { id: "accessibility", label: "Accessibility", href: "/help" },
+      { id: "sustainability", label: "Sustainability", href: "/help" },
+      { id: "press", label: "Press Center", href: "/help" },
+      { id: "investor-relations", label: "Investor Relations", href: "/help" },
     ],
   },
   {
     title: "Make Money with Us",
     items: [
-      { id: "sell-footer", label: "Sell products", href: "/sell" },
-      { id: "sell-register-footer", label: "Become an affiliate", href: "/sell/register" },
-      { id: "sell-pricing-footer", label: "Advertise", href: "/sell/pricing" },
+      { id: "sell-landing", label: "Sell on Nuvara", href: "/sell" },
+      { id: "sell-register-footer", label: "Become an Affiliate", href: "/sell/register" },
+      { id: "supply", label: "Supply to Nuvara", href: "/sell" },
+      { id: "protect-brand", label: "Protect & Build Your Brand", href: "/sell" },
+      { id: "delivery-driver", label: "Become a Delivery Driver", href: "/help" },
+      { id: "advertise", label: "Advertise Your Products", href: "/sell/pricing" },
     ],
   },
   {
-    title: "Payment Products",
+    title: "Nuvara Payment Products",
     items: [
+      { id: "nuvara-card", label: "Nuvara Store Card", href: "/help" },
+      { id: "shop-points", label: "Shop with Points", href: "/help" },
+      { id: "reload-balance", label: "Reload Your Balance", href: "/help" },
       { id: "gift-cards-footer", label: "Gift Cards", href: "/gift-cards" },
-      { id: "coupons-footer", label: "Coupons", href: "/coupons" },
-      { id: "deals-footer", label: "Today's Deals", href: "/deals/todays-deals" },
-      { id: "prime-footer", label: "Nuvara+ Membership", href: "/prime" },
+      { id: "currency-converter", label: "Currency Converter", href: "/help" },
     ],
   },
   {
@@ -51,9 +59,12 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
     items: [
       { id: "account", label: "Your Account", href: "/account" },
       { id: "orders-footer", label: "Your Orders", href: "/orders" },
-      { id: "help-footer", label: "Help", href: "/help" },
-      { id: "returns-footer", label: "Returns", href: "/customer-service" },
+      { id: "shipping", label: "Shipping Rates & Policies", href: "/help" },
+      { id: "prime-footer", label: "Nuvara+", href: "/prime" },
+      { id: "returns-footer", label: "Returns & Replacements", href: "/customer-service" },
+      { id: "recalls", label: "Recalls and Product Safety Alerts", href: "/help" },
       { id: "lists-footer", label: "Your Lists", href: "/lists" },
+      { id: "help-footer", label: "Customer Service", href: "/help" },
     ],
   },
 ];

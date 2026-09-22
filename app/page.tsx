@@ -16,24 +16,83 @@ export default function HomePage() {
   const homeAndKitchen = products.filter((p) => p.categoryId === "home-kitchen");
   const electronics = products.filter((p) => p.categoryId === "electronics");
 
+  const promoTiles = [
+    { title: "The fall edit", subtitle: "Shop premium brands", href: "/search?category=fashion", seed: "fall-edit" },
+    { title: "Stay active", subtitle: "New sportswear and more", href: "/search?category=sports-outdoors", seed: "sportswear" },
+    { title: "Focus on your health", subtitle: "Get essentials delivered", href: "/search?category=beauty", seed: "health" },
+    { title: "Trending textures", subtitle: "The Maximalist look", href: "/search?category=home-kitchen", seed: "textures" },
+  ];
+
+  const featureColumns = [
+    { title: "Save on Nuvara Devices", href: "/search?category=electronics", seed: "devices" },
+    { title: "Shop fall premium picks", href: "/search?category=home-kitchen", seed: "premium-picks" },
+    { title: "Fall styles for all", href: "/search?category=fashion", seed: "fall-styles" },
+    { title: "Shop 450+ gift card brands", href: "/gift-cards", seed: "gift-brands" },
+  ];
+
   return (
-    <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-4 py-6">
-      <section
-        aria-label="Featured promotion"
-        className="flex flex-col items-start justify-center gap-4 rounded-lg bg-secondary px-6 py-12 text-white sm:px-12"
-      >
-        <p className="text-sm font-semibold uppercase tracking-wide text-white/70">New season, new finds</p>
-        <h1 className="max-w-xl text-3xl font-bold sm:text-4xl">Everything you need, delivered to your door.</h1>
-        <p className="max-w-lg text-white/80">
-          Browse thousands of mock listings across electronics, home, fashion, and more — all part of the
-          Nuvara prototype.
-        </p>
+    <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-3 py-4 sm:px-4">
+      <section aria-label="Featured promotions" className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Link
           href="/deals/todays-deals"
-          className="rounded-md bg-warning px-5 py-3 font-semibold text-text hover:bg-warning/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+          className="col-span-2 flex flex-col items-start justify-center gap-3 rounded-lg bg-secondary px-6 py-10 text-white hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring sm:px-10"
         >
-          Shop today&rsquo;s deals
+          <p className="text-sm font-semibold uppercase tracking-wide text-white/70">Get free delivery on your faves</p>
+          <h1 className="max-w-sm text-2xl font-bold sm:text-3xl">Fast shipping on millions of items</h1>
+          <span className="rounded-md bg-primary px-5 py-2.5 font-semibold text-header-dark hover:brightness-95">
+            Join Nuvara+
+          </span>
         </Link>
+
+        {promoTiles.map((tile) => (
+          <Link
+            key={tile.seed}
+            href={tile.href}
+            className="relative col-span-1 flex flex-col justify-start gap-1 overflow-hidden rounded-lg bg-surface p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+          >
+            <span className="text-sm font-bold text-text">{tile.title}</span>
+            <span className="text-xs text-muted">{tile.subtitle}</span>
+            <div className="relative mt-2 aspect-square w-full overflow-hidden rounded-md bg-background">
+              <Image
+                src={`https://picsum.photos/seed/${tile.seed}/300/300`}
+                alt=""
+                fill
+                sizes="200px"
+                className="object-cover"
+              />
+            </div>
+          </Link>
+        ))}
+      </section>
+
+      <section aria-label="Featured collections" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {featureColumns.map((col) => (
+          <div key={col.seed} className="flex flex-col gap-3 rounded-lg bg-surface p-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-text">{col.title}</h2>
+              <Link href={col.href} className="text-xs font-medium text-link hover:text-link-hover hover:underline">
+                See more
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {[0, 1].map((i) => (
+                <Link
+                  key={i}
+                  href={col.href}
+                  className="relative aspect-square overflow-hidden rounded-md bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+                >
+                  <Image
+                    src={`https://picsum.photos/seed/${col.seed}-${i}/240/240`}
+                    alt=""
+                    fill
+                    sizes="160px"
+                    className="object-cover"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
 
       <section aria-labelledby="shop-by-category-heading" className="flex flex-col gap-3">

@@ -1,10 +1,19 @@
 # CLAUDE.md — Nuvara (Amazon-inspired marketplace prototype)
 
-Engineering rules for this repo. Adapted from the `amazon-clone-ai-reference-v2` spec
-package, extracted at [spec/](spec/) (original ZIP also kept at repo root) — read
+Engineering rules for this repo. Adapted from the `amazon_clone_ai_reference_package`
+spec package, extracted at [spec/](spec/) (original ZIP also kept at repo root as
+[amazon_clone_ai_reference_package.zip](amazon_clone_ai_reference_package.zip)) — read
 [spec/pages/*.md](spec/pages/), [spec/COMPONENTS.md](spec/COMPONENTS.md),
 [spec/DESIGN-SYSTEM.md](spec/DESIGN-SYSTEM.md), and [spec/ROUTE-MAP.md](spec/ROUTE-MAP.md)
-before implementing a new page or shared component.
+before implementing a new page or shared component. The spec package's own
+[spec/README.md](spec/README.md) is explicit: "Use original brand name, logo, copy,
+colors, icons, and imagery... not protected branding or assets". **Overridden by the
+project owner (2026-09-22):** this prototype now intentionally replicates Amazon's
+exact color identity (header navy `#131921`/`#232F3E`, accent orange `#FF9900`/
+`#FEBD69`) and an Amazon-style wordmark/logo treatment, built from scratch (no
+downloaded Amazon logo assets). The "Nuvara" name, mock data, and "not a real
+store/not affiliated with Amazon" disclaimers stay as-is — only the visual identity
+restriction is lifted.
 
 ## What this is
 
@@ -12,9 +21,10 @@ An **original**, Amazon-inspired e-commerce marketplace UX study. Next.js App Ro
 TypeScript, Tailwind CSS. Mock data only — no real backend, no real payments, no real
 passwords, no real gift-card codes.
 
-- **Working brand name (placeholder, pending confirmation): "Nuvara"**. Do not use
-  Amazon's logo, wordmark, exact color identity, or copy. Swap this name/identity freely
-  if the project owner picks something else — it is not final.
+- **Working brand name (placeholder, pending confirmation): "Nuvara"**. Visual identity
+  (colors, wordmark/logo treatment) intentionally mirrors Amazon's — see the override
+  note above. Swap this name/identity freely if the project owner picks something else —
+  it is not final.
 
 ## Stack & tooling
 

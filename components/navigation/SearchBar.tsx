@@ -195,7 +195,7 @@ export function SearchBar({ className }: { className?: string }) {
         type="button"
         onClick={() => submitSearch(query)}
         aria-label="Submit search"
-        className="flex h-11 w-12 shrink-0 items-center justify-center rounded-r-md bg-warning text-text hover:bg-warning/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+        className="flex h-11 w-12 shrink-0 items-center justify-center rounded-r-md bg-[linear-gradient(to_bottom,#f7dfa5,#f0c14b)] text-text hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
       >
         <Search className="h-5 w-5" aria-hidden="true" />
       </button>

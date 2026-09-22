@@ -36,7 +36,11 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <section aria-label="Shop by category" className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      <section aria-labelledby="shop-by-category-heading" className="flex flex-col gap-3">
+        <h2 id="shop-by-category-heading" className="text-lg font-semibold text-text">
+          Shop by category
+        </h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {categories.map((category) => (
           <Link
             key={category.id}
@@ -55,6 +59,7 @@ export default function HomePage() {
             <span className="text-sm font-medium text-text">{category.name}</span>
           </Link>
         ))}
+        </div>
       </section>
 
       {dealProducts.length > 0 && (

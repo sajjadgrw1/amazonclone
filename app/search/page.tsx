@@ -65,7 +65,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
           <li>
             <Link href="/" className="hover:underline">Home</Link>
           </li>
-          <li aria-hidden="true">/</li>
+          <li aria-hidden="true">›</li>
           <li className="text-text" aria-current="page">
             {heading}
           </li>

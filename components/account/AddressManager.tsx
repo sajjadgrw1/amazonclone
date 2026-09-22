@@ -51,7 +51,10 @@ export function AddressManager({ defaultAddresses }: { defaultAddresses: Address
     <div className="flex flex-col gap-3">
       {defaultAddresses.map((addr) => (
         <div key={addr.id} className="rounded-md border border-border p-3 text-sm">
-          <p className="font-medium text-text">{addr.fullName} <span className="ml-1 text-xs text-muted">(default demo address)</span></p>
+          <p className="font-medium text-text">
+            {addr.fullName}
+            {addr.isDefault && <span className="ml-1 text-xs text-muted">(default)</span>}
+          </p>
           <p className="text-muted">
             {addr.line1}, {addr.city}, {addr.state} {addr.postalCode}, {addr.country}
           </p>

@@ -13,6 +13,7 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const { login } = useAuth();
 
+  const [step, setStep] = useState<"identifier" | "password">("identifier");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string | undefined>();
@@ -20,27 +21,24 @@ function LoginForm() {
   const [formError, setFormError] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState(false);
 
-  function validate(): boolean {
-    let valid = true;
+  function handleContinue(e: FormEvent) {
+    e.preventDefault();
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setEmailError("Enter a valid email address.");
-      valid = false;
-    } else {
-      setEmailError(undefined);
+      return;
     }
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters.");
-      valid = false;
-    } else {
-      setPasswordError(undefined);
-    }
-    return valid;
+    setEmailError(undefined);
+    setStep("password");
   }
 
-  function handleSubmit(e: FormEvent) {
+  function handleSignIn(e: FormEvent) {
     e.preventDefault();
     setFormError(undefined);
-    if (!validate()) return;
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters.");
+      return;
+    }
+    setPasswordError(undefined);
 
     setIsLoading(true);
     window.setTimeout(() => {
@@ -56,63 +54,88 @@ function LoginForm() {
   }
 
   return (
-    <div className="mx-auto flex max-w-md flex-col gap-6 px-4 py-12">
-      <div className="text-center">
-        <Link href="/" className="text-2xl font-bold text-text">
-          nuvara
-        </Link>
-      </div>
-
+    <div className="mx-auto flex max-w-sm flex-col gap-4 px-4 py-12">
       <div className="rounded-lg border border-border bg-surface p-6">
+        <div className="mb-4 text-center">
+          <Link href="/" className="text-2xl font-bold text-text">
+            nuvara
+          </Link>
+        </div>
+
         <h1 className="mb-4 text-xl font-semibold text-text">Sign in</h1>
 
-        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-          <Input
-            label="Email or mobile phone number"
-            type="email"
-            autoComplete="username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            error={emailError}
-            required
-          />
-          <PasswordInput
-            label="Password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            error={passwordError}
-            required
-          />
-
-          {formError && (
-            <p role="alert" className="text-sm text-danger">
-              {formError}
+        {step === "identifier" ? (
+          <form onSubmit={handleContinue} noValidate className="flex flex-col gap-4">
+            <Input
+              label="Email or mobile phone number"
+              type="email"
+              autoComplete="username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              error={emailError}
+              required
+              autoFocus
+            />
+            <Button type="submit" fullWidth>
+              Continue
+            </Button>
+            <p className="text-xs text-muted">
+              By continuing, you agree to Nuvara&rsquo;s Conditions of Use and Privacy Notice (demo copy).
             </p>
-          )}
 
-          <Button type="submit" isLoading={isLoading} fullWidth>
-            Sign In
-          </Button>
+            <div className="border-t border-border pt-4">
+              <p className="mb-2 text-sm font-semibold text-text">New to Nuvara?</p>
+              <Link href="/signup">
+                <Button type="button" variant="outline" fullWidth>
+                  Create your account
+                </Button>
+              </Link>
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={handleSignIn} noValidate className="flex flex-col gap-4">
+            <div className="flex items-center justify-between rounded-md bg-background px-3 py-2 text-sm">
+              <span className="text-text">{email}</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setStep("identifier");
+                  setFormError(undefined);
+                }}
+                className="font-medium text-primary hover:underline"
+              >
+                Change
+              </button>
+            </div>
 
-          <p className="text-xs text-muted">
-            This is a mock sign-in for the Nuvara prototype — no real credentials are stored. Try
-            <code className="mx-1 rounded bg-background px-1">fail@example.com</code>
-            to preview the error state.
-          </p>
-        </form>
+            <PasswordInput
+              label="Password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={passwordError}
+              required
+              autoFocus
+            />
+
+            {formError && (
+              <p role="alert" className="text-sm text-danger">
+                {formError}
+              </p>
+            )}
+
+            <Button type="submit" isLoading={isLoading} fullWidth>
+              Sign In
+            </Button>
+
+            <p className="text-xs text-muted">
+              This is a mock sign-in for the Nuvara prototype — no real credentials are stored. Try{" "}
+              <code className="rounded bg-background px-1">fail@example.com</code> to preview the error
+              state.
+            </p>
+          </form>
+        )}
       </div>
-
-      <div className="text-center text-sm text-muted">
-        New to Nuvara?{" "}
-        <Link href="/signup" className="font-medium text-primary hover:underline">
-          Create your account
-        </Link>
-      </div>
-
-      <p className="text-center text-xs text-muted">
-        By continuing, you agree to Nuvara&rsquo;s Conditions of Use and Privacy Notice (demo copy).
-      </p>
     </div>
   );
 }

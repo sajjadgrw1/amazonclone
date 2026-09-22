@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { mockOrders } from "@/data/mock-account";
 import { OrderStatusBadge } from "@/components/orders/StatusBadge";
+import { TrackingStepper } from "@/components/orders/TrackingStepper";
 import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { useOrders } from "@/lib/store/app-store";
@@ -42,7 +43,7 @@ export default function OrderDetailPage(props: PageProps<"/orders/[id]">) {
         <Link href="/orders" className="hover:underline">
           Your Orders
         </Link>{" "}
-        / <span className="text-text">{order.orderNumber}</span>
+        › <span className="text-text">{order.orderNumber}</span>
       </nav>
 
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -51,6 +52,10 @@ export default function OrderDetailPage(props: PageProps<"/orders/[id]">) {
           <p className="text-sm text-muted">Placed on {formatDateTime(order.placedAt)}</p>
         </div>
         <OrderStatusBadge status={order.status} />
+      </div>
+
+      <div className="mb-4">
+        <TrackingStepper order={order} />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">

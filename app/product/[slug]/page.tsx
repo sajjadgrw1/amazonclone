@@ -40,7 +40,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           <li>
             <Link href="/" className="hover:underline">Home</Link>
           </li>
-          <li aria-hidden="true">/</li>
+          <li aria-hidden="true">›</li>
           {category && (
             <>
               <li>
@@ -48,7 +48,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
                   {category.name}
                 </Link>
               </li>
-              <li aria-hidden="true">/</li>
+              <li aria-hidden="true">›</li>
             </>
           )}
           <li className="line-clamp-1 text-text" aria-current="page">

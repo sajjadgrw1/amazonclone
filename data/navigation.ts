@@ -30,16 +30,15 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
     ],
   },
   {
-    title: "Customer Service",
+    title: "Make Money with Us",
     items: [
-      { id: "help", label: "Help", href: "/help" },
-      { id: "customer-service", label: "Customer Service", href: "/customer-service" },
-      { id: "orders", label: "Your Orders", href: "/orders" },
-      { id: "returns", label: "Returns & Refunds", href: "/customer-service" },
+      { id: "sell-footer", label: "Sell products", href: "/sell" },
+      { id: "sell-register-footer", label: "Become an affiliate", href: "/sell/register" },
+      { id: "sell-pricing-footer", label: "Advertise", href: "/sell/pricing" },
     ],
   },
   {
-    title: "Shop & Save",
+    title: "Payment Products",
     items: [
       { id: "gift-cards-footer", label: "Gift Cards", href: "/gift-cards" },
       { id: "coupons-footer", label: "Coupons", href: "/coupons" },
@@ -51,9 +50,10 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
     title: "Let Us Help You",
     items: [
       { id: "account", label: "Your Account", href: "/account" },
-      { id: "lists", label: "Your Lists", href: "/lists" },
-      { id: "registry", label: "Registry", href: "/registry" },
-      { id: "wishlist-footer", label: "Wishlist", href: "/wishlist" },
+      { id: "orders-footer", label: "Your Orders", href: "/orders" },
+      { id: "help-footer", label: "Help", href: "/help" },
+      { id: "returns-footer", label: "Returns", href: "/customer-service" },
+      { id: "lists-footer", label: "Your Lists", href: "/lists" },
     ],
   },
 ];

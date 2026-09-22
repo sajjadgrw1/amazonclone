@@ -153,10 +153,16 @@ export function ProductDetailView({ product, eligibleCoupon }: ProductDetailView
             </p>
           )}
 
-          <div className="flex items-center gap-2 border-t border-border pt-3 text-xs text-muted">
-            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-            Sold and shipped by {product.brand ?? "Nuvara Marketplace"} (mock seller)
+        </div>
+
+        <div className="flex flex-col gap-2 rounded-lg border border-border p-4 text-sm">
+          <div className="flex items-center gap-1.5 text-muted">
+            <ShieldCheck className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span className="font-semibold text-text">Ships from</span>
           </div>
+          <p className="text-muted">Nuvara-style fulfillment (mock)</p>
+          <p className="font-semibold text-text">Sold by</p>
+          <p className="text-muted">{product.brand ?? "Example Seller"}</p>
         </div>
       </div>
     </div>

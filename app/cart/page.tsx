@@ -70,6 +70,8 @@ export default function CartPage() {
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div className="flex flex-col gap-6">
           <div className="rounded-lg border border-border bg-surface p-4">
+            <h2 className="mb-2 text-lg font-semibold text-text">Cart</h2>
+
             {activeItems.length === 0 ? (
               <p className="py-6 text-center text-sm text-muted">No items in your cart right now.</p>
             ) : (
@@ -79,18 +81,20 @@ export default function CartPage() {
                 return <CartItemRow key={`${item.productId}-${item.variantId ?? "default"}`} item={item} product={product} />;
               })
             )}
-          </div>
 
-          {savedItems.length > 0 && (
-            <div className="rounded-lg border border-border bg-surface p-4">
-              <h2 className="mb-2 text-lg font-semibold text-text">Saved for later ({savedItems.length})</h2>
-              {savedItems.map((item) => {
-                const product = products.find((p) => p.id === item.productId);
-                if (!product) return null;
-                return <CartItemRow key={`${item.productId}-${item.variantId ?? "default"}-saved`} item={item} product={product} />;
-              })}
+            <div className="mt-4 rounded-md border border-border p-4">
+              <h3 className="mb-2 font-semibold text-text">Saved for later {savedItems.length > 0 && `(${savedItems.length})`}</h3>
+              {savedItems.length === 0 ? (
+                <p className="text-sm text-muted">Your saved items appear here.</p>
+              ) : (
+                savedItems.map((item) => {
+                  const product = products.find((p) => p.id === item.productId);
+                  if (!product) return null;
+                  return <CartItemRow key={`${item.productId}-${item.variantId ?? "default"}-saved`} item={item} product={product} />;
+                })
+              )}
             </div>
-          )}
+          </div>
 
           <ProductCarousel heading="Frequently viewed together" products={recommended} />
         </div>

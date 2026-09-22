@@ -33,19 +33,19 @@ export function OrderCard({ order }: { order: Order }) {
 
   return (
     <div className="rounded-lg border border-border bg-surface p-4">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3 text-xs text-muted">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3 text-xs uppercase tracking-wide text-muted">
         <div className="flex flex-wrap gap-4">
           <span>
-            <span className="block font-medium text-text">Order placed</span>
-            {formatDate(order.placedAt)}
+            <span className="block font-semibold text-text">Order placed</span>
+            <span className="normal-case">{formatDate(order.placedAt)}</span>
           </span>
           <span>
-            <span className="block font-medium text-text">Total</span>
-            {formatCurrency(order.total)}
+            <span className="block font-semibold text-text">Total</span>
+            <span className="normal-case">{formatCurrency(order.total)}</span>
           </span>
           <span>
-            <span className="block font-medium text-text">Order #</span>
-            {order.orderNumber}
+            <span className="block font-semibold text-text">Order #</span>
+            <span className="normal-case">{order.orderNumber}</span>
           </span>
         </div>
         <OrderStatusBadge status={order.status} />
@@ -70,14 +70,14 @@ export function OrderCard({ order }: { order: Order }) {
       {actionMessage && <p className="mb-2 text-sm text-success">{actionMessage}</p>}
 
       <div className="flex flex-wrap gap-2 border-t border-border pt-3">
+        <Button type="button" size="sm">
+          Track package
+        </Button>
         <Link href={`/orders/${order.id}`}>
           <Button type="button" variant="outline" size="sm">
-            View order details
+            View order
           </Button>
         </Link>
-        <Button type="button" variant="outline" size="sm">
-          Track order (mock)
-        </Button>
         {canCancel && (
           <Button type="button" variant="outline" size="sm" onClick={() => openConfirm("cancel")}>
             Cancel order

@@ -149,6 +149,25 @@ export interface User {
   defaultPaymentMethodId?: string;
 }
 
+export type ListPrivacy = "private" | "shared";
+
+export interface ProductList {
+  id: string;
+  name: string;
+  privacy: ListPrivacy;
+  productIds: string[];
+  createdAt: string;
+}
+
+export interface Registry {
+  id: string;
+  occasion: string;
+  ownerName: string;
+  eventDate?: string;
+  productIds: string[];
+  createdAt: string;
+}
+
 export interface NavigationItem {
   id: string;
   label: string;

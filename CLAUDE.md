@@ -1,9 +1,10 @@
 # CLAUDE.md — Nuvara (Amazon-inspired marketplace prototype)
 
 Engineering rules for this repo. Adapted from the `amazon-clone-ai-reference-v2` spec
-package (kept at the repo root as `amazon-clone-ai-reference-v2.zip`) — read the specs
-in `pages/*.md`, `COMPONENTS.md`, `DESIGN-SYSTEM.md`, and `ROUTE-MAP.md` from that
-package before implementing a new page or shared component.
+package, extracted at [spec/](spec/) (original ZIP also kept at repo root) — read
+[spec/pages/*.md](spec/pages/), [spec/COMPONENTS.md](spec/COMPONENTS.md),
+[spec/DESIGN-SYSTEM.md](spec/DESIGN-SYSTEM.md), and [spec/ROUTE-MAP.md](spec/ROUTE-MAP.md)
+before implementing a new page or shared component.
 
 ## What this is
 
@@ -109,3 +110,26 @@ elsewhere. Mock data in `data/` must be typed against these interfaces.
   fictional benefits — never "Prime" in user-facing copy.
 - Deal countdowns must be computed from real `startAt`/`endAt` timestamps, never
   hardcoded strings.
+- `/product/[slug]` calls `notFound()` for an unknown slug, but because the root layout's
+  `Header` contains a `<Suspense>` boundary (required for `useSearchParams` in
+  `CategoryNavigation`), the response has already started streaming as `200` by the time
+  `notFound()` runs — this is Next.js's documented "soft 404" trade-off for streaming App
+  Router pages (see `node_modules/next/dist/docs/.../not-found.md` and
+  `.../loading.md#status-codes`), not a bug. The correct UI renders and Next.js auto-injects
+  `<meta name="robots" content="noindex">`, but the HTTP status is `200`, not `404`. A true
+  404 status would require checking existence in `proxy.ts` before any rendering starts —
+  not implemented here since it can't special-case one dynamic segment without also
+  intercepting every other route. `/orders/[id]` has the same soft-not-found UI behavior,
+  for a different reason: order data lives in client-side state (`localStorage`), which a
+  server component / proxy can never see, so that page's "not found" branch is inherently
+  client-only.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -174,3 +174,23 @@ export interface NavigationItem {
   href: string;
   children?: NavigationItem[];
 }
+
+export interface JobPosting {
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  employmentType: "Full-time" | "Part-time" | "Contract" | "Internship";
+  postedAt: string; // ISO timestamp
+  description: string;
+}
+
+export interface PressRelease {
+  id: string;
+  slug: string;
+  title: string;
+  publishedAt: string; // ISO timestamp
+  category: string;
+  excerpt: string;
+  body: string;
+}

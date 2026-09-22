@@ -1,0 +1,78 @@
+import type { JobPosting } from "@/types";
+
+export const jobs: JobPosting[] = [
+  {
+    id: "job-1",
+    title: "Frontend Engineer, Storefront",
+    department: "Engineering",
+    location: "Remote (US)",
+    employmentType: "Full-time",
+    postedAt: "2026-08-18T09:00:00.000Z",
+    description:
+      "Build and maintain customer-facing storefront experiences using React and TypeScript. Work closely with design on the shared component library.",
+  },
+  {
+    id: "job-2",
+    title: "Warehouse Associate",
+    department: "Operations",
+    location: "Nashville, TN",
+    employmentType: "Full-time",
+    postedAt: "2026-09-02T09:00:00.000Z",
+    description:
+      "Pick, pack, and ship customer orders in a fast-paced fulfillment center. Physical role with shift-based scheduling.",
+  },
+  {
+    id: "job-3",
+    title: "Product Designer, Checkout",
+    department: "Design",
+    location: "Remote (US)",
+    employmentType: "Full-time",
+    postedAt: "2026-08-25T09:00:00.000Z",
+    description: "Own end-to-end checkout and payments UX, from wireframes to shipped interfaces.",
+  },
+  {
+    id: "job-4",
+    title: "Data Analyst, Seller Services",
+    department: "Data & Analytics",
+    location: "Austin, TX",
+    employmentType: "Full-time",
+    postedAt: "2026-09-10T09:00:00.000Z",
+    description: "Analyze seller performance data and build dashboards that guide marketplace policy decisions.",
+  },
+  {
+    id: "job-5",
+    title: "Customer Service Representative",
+    department: "Customer Service",
+    location: "Remote (US)",
+    employmentType: "Part-time",
+    postedAt: "2026-09-14T09:00:00.000Z",
+    description: "Help customers with order issues, returns, and account questions over chat and email.",
+  },
+  {
+    id: "job-6",
+    title: "Software Engineering Intern",
+    department: "Engineering",
+    location: "Seattle, WA",
+    employmentType: "Internship",
+    postedAt: "2026-09-05T09:00:00.000Z",
+    description: "12-week summer internship building real features alongside a mentor on the platform team.",
+  },
+  {
+    id: "job-7",
+    title: "Sustainability Program Manager",
+    department: "Sustainability",
+    location: "Remote (US)",
+    employmentType: "Full-time",
+    postedAt: "2026-07-29T09:00:00.000Z",
+    description: "Drive packaging waste-reduction initiatives and report on carbon-footprint progress.",
+  },
+  {
+    id: "job-8",
+    title: "Delivery Driver",
+    department: "Logistics",
+    location: "Nashville, TN",
+    employmentType: "Contract",
+    postedAt: "2026-09-16T09:00:00.000Z",
+    description: "Deliver customer packages on a flexible schedule using your own vehicle.",
+  },
+];

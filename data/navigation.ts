@@ -24,13 +24,13 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
   {
     title: "Get to Know Us",
     items: [
-      { id: "careers", label: "Careers", href: "/help" },
-      { id: "newsletter", label: "Nuvara Newsletter", href: "/help" },
-      { id: "about", label: "About Nuvara", href: "/help" },
-      { id: "accessibility", label: "Accessibility", href: "/help" },
-      { id: "sustainability", label: "Sustainability", href: "/help" },
-      { id: "press", label: "Press Center", href: "/help" },
-      { id: "investor-relations", label: "Investor Relations", href: "/help" },
+      { id: "careers", label: "Careers", href: "/careers" },
+      { id: "newsletter", label: "Nuvara Newsletter", href: "/newsletter" },
+      { id: "about", label: "About Nuvara", href: "/about" },
+      { id: "accessibility", label: "Accessibility", href: "/accessibility" },
+      { id: "sustainability", label: "Sustainability", href: "/sustainability" },
+      { id: "press", label: "Press Center", href: "/press" },
+      { id: "investor-relations", label: "Investor Relations", href: "/investor-relations" },
     ],
   },
   {

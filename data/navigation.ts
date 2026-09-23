@@ -61,7 +61,7 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
       { id: "orders-footer", label: "Your Orders", href: "/orders" },
       { id: "shipping", label: "Shipping Rates & Policies", href: "/help/shipping" },
       { id: "prime-footer", label: "Nuvara+", href: "/prime" },
-      { id: "returns-footer", label: "Returns & Replacements", href: "/customer-service" },
+      { id: "returns-footer", label: "Returns & Replacements", href: "/returns" },
       { id: "recalls", label: "Recalls and Product Safety Alerts", href: "/help" },
       { id: "lists-footer", label: "Your Lists", href: "/lists" },
       { id: "help-footer", label: "Customer Service", href: "/help" },

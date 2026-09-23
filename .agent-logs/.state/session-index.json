@@ -36,11 +36,11 @@
     "session_id": "bc0d838a-abdd-496c-8b9f-64a8da545f30",
     "date": "2026-09-23",
     "author": "Abdullah Butt",
-    "model": "unknown",
+    "model": "claude-sonnet-5",
     "project": "amazonclone",
     "count": 1,
     "first_prompt_time": "2026-09-23T11:56:01.972Z",
-    "last_prompt_time": "2026-09-23T11:56:01.972Z",
+    "last_prompt_time": "2026-09-23T11:58:27.029Z",
     "filePath": "c:\\amazon_clone\\amazonclone\\.agent-logs\\2026-09-23_11-56-01_bc0d838a-abdd-496c-8b9f-64a8da545f30.md"
   }
 }

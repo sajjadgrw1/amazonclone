@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   CreditCard,
+  Gift,
   Headphones,
   ListChecks,
   Lock,
@@ -49,12 +50,13 @@ export default function AccountPage() {
   }
 
   const hubCards = [
-    { href: "/orders", icon: Package, title: "Your Orders", body: "Track, return, or buy again." },
-    { href: "#security", icon: Lock, title: "Login & Security", body: "Manage your name, email, and sign-out." },
+    { href: "/orders", icon: Package, title: "Your Orders", body: "Track, return, cancel an order, or buy again." },
+    { href: "#security", icon: Lock, title: "Login & Security", body: "Edit your name, email, and sign-out." },
+    { href: "/prime", icon: Sparkles, title: "Nuvara+", body: "Manage your membership and mock benefits." },
     { href: "#addresses", icon: MapPin, title: "Your Addresses", body: "Add, edit, or remove delivery addresses." },
-    { href: "#payment", icon: CreditCard, title: "Payment Options", body: "View mock payment methods on file." },
+    { href: "/gift-cards", icon: Gift, title: "Gift Cards", body: "View balance or redeem a mock gift card." },
+    { href: "#payment", icon: CreditCard, title: "Your Payments", body: "View mock payment methods on file." },
     { href: "/lists", icon: ListChecks, title: "Your Lists", body: "Products you've saved to a list." },
-    { href: "/prime", icon: Sparkles, title: "Memberships", body: "Manage your Nuvara+ membership." },
     { href: "/orders", icon: Repeat, title: "Subscriptions", body: "View recurring mock orders." },
     { href: "/customer-service", icon: Headphones, title: "Customer Service", body: "Get help with an order or account." },
   ];
@@ -63,16 +65,20 @@ export default function AccountPage() {
     <div className="mx-auto max-w-[1440px] px-4 py-6">
       <h1 className="mb-6 text-2xl font-semibold text-text">Your Account</h1>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {hubCards.map((card) => (
           <Link
             key={card.title}
             href={card.href}
-            className="flex flex-col gap-2 rounded-lg border border-border bg-surface p-4 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
+            className="flex items-start gap-4 rounded-lg border border-border bg-surface p-5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
           >
-            <card.icon className="h-6 w-6 text-primary" aria-hidden="true" />
-            <p className="font-semibold text-text">{card.title}</p>
-            <p className="text-sm text-muted">{card.body}</p>
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-link/10 text-link">
+              <card.icon className="h-6 w-6" aria-hidden="true" />
+            </span>
+            <span className="flex flex-col gap-1">
+              <span className="font-semibold text-text">{card.title}</span>
+              <span className="text-sm text-muted">{card.body}</span>
+            </span>
           </Link>
         ))}
       </div>

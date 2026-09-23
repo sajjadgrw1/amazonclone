@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { PasswordInput } from "@/components/ui/PasswordInput";
 import { Button } from "@/components/ui/Button";
+import { demoCredentials } from "@/data/mock-account";
 import { useAuth } from "@/lib/store/app-store";
 
 function LoginForm() {
@@ -27,6 +28,10 @@ function LoginForm() {
       setEmailError("Enter a valid email address.");
       return;
     }
+    if (email.trim().toLowerCase() !== demoCredentials.email) {
+      setEmailError("We cannot find an account with that email address.");
+      return;
+    }
     setEmailError(undefined);
     setStep("password");
   }
@@ -34,8 +39,8 @@ function LoginForm() {
   function handleSignIn(e: FormEvent) {
     e.preventDefault();
     setFormError(undefined);
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters.");
+    if (!password) {
+      setPasswordError("Enter your password.");
       return;
     }
     setPasswordError(undefined);
@@ -43,8 +48,8 @@ function LoginForm() {
     setIsLoading(true);
     window.setTimeout(() => {
       setIsLoading(false);
-      if (email.toLowerCase() === "fail@example.com") {
-        setFormError("Invalid email or password. This is a mock error state — try any other email.");
+      if (password !== demoCredentials.password) {
+        setFormError("Your password is incorrect. Check it and try again.");
         return;
       }
       login();
@@ -82,6 +87,8 @@ function LoginForm() {
             <p className="text-xs text-muted">
               By continuing, you agree to Nuvara&rsquo;s Conditions of Use and Privacy Notice (demo copy).
             </p>
+
+            <DemoCredentialsHint />
 
             <div className="border-t border-border pt-4">
               <p className="mb-2 text-sm font-semibold text-text">New to Nuvara?</p>
@@ -128,14 +135,26 @@ function LoginForm() {
               Sign In
             </Button>
 
-            <p className="text-xs text-muted">
-              This is a mock sign-in for the Nuvara prototype — no real credentials are stored. Try{" "}
-              <code className="rounded bg-background px-1">fail@example.com</code> to preview the error
-              state.
-            </p>
+            <DemoCredentialsHint />
           </form>
         )}
       </div>
+    </div>
+  );
+}
+
+function DemoCredentialsHint() {
+  return (
+    <div className="rounded-md bg-background p-3 text-xs text-muted">
+      <p className="font-semibold text-text">Demo account</p>
+      <p className="mt-1">
+        Email: <code className="rounded bg-surface px-1">{demoCredentials.email}</code>
+        <br />
+        Password: <code className="rounded bg-surface px-1">{demoCredentials.password}</code>
+      </p>
+      <p className="mt-1">
+        Mock sign-in only — no real account exists and nothing you type is stored or sent anywhere.
+      </p>
     </div>
   );
 }

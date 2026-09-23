@@ -74,6 +74,7 @@ export default function PressPage() {
 
   return (
     <div className="flex flex-col">
+      <h1 className="sr-only">Nuvara News</h1>
       <NewsMasthead />
 
       <div className="mx-auto w-full max-w-[1440px] px-4 py-6">

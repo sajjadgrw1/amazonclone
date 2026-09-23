@@ -82,6 +82,7 @@ export default function CareersPage() {
 
   return (
     <div className="flex flex-col">
+      <h1 className="sr-only">Careers at Nuvara</h1>
       <div className="bg-header-dark text-white">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-4">
           <div className="flex items-center gap-3">

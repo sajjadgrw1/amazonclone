@@ -1,9 +1,18 @@
 import type { Address, Order, PaymentMethod, User } from "@/types";
 
+/**
+ * The only credentials the mock sign-in accepts. Safe to keep in client code:
+ * this prototype has no backend and no real account behind it.
+ */
+export const demoCredentials = {
+  email: "sajjad@gmail.com",
+  password: "Test@123",
+};
+
 export const mockAddresses: Address[] = [
   {
     id: "addr-home",
-    fullName: "Jordan Ellis",
+    fullName: "Sajjad Khan",
     line1: "482 Birchwood Lane",
     city: "Austin",
     state: "TX",
@@ -14,7 +23,7 @@ export const mockAddresses: Address[] = [
   },
   {
     id: "addr-work",
-    fullName: "Jordan Ellis",
+    fullName: "Sajjad Khan",
     line1: "1200 Commerce Street, Suite 400",
     city: "Austin",
     state: "TX",
@@ -29,9 +38,9 @@ export const mockPaymentMethods: PaymentMethod[] = [
 ];
 
 export const mockUser: User = {
-  id: "user-jordan-ellis",
-  name: "Jordan Ellis",
-  email: "jordan.ellis@example.com",
+  id: "user-sajjad",
+  name: "Sajjad Khan",
+  email: demoCredentials.email,
   addresses: mockAddresses,
   defaultPaymentMethodId: "pm-card-1",
 };

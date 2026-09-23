@@ -8,11 +8,18 @@ import { OrderStatusBadge } from "@/components/orders/StatusBadge";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { formatCurrency, formatDate } from "@/lib/format";
+import { useCart } from "@/lib/store/app-store";
 
 export function OrderCard({ order }: { order: Order }) {
+  const { addToCart } = useCart();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [pendingAction, setPendingAction] = useState<"cancel" | "return" | null>(null);
   const [actionMessage, setActionMessage] = useState<string | undefined>();
+
+  function handleBuyAgain() {
+    order.items.forEach((item) => addToCart(item.productId, item.quantity, item.variantId));
+    setActionMessage("Added to cart (mock reorder — no real order was placed).");
+  }
 
   function openConfirm(action: "cancel" | "return") {
     setPendingAction(action);
@@ -84,9 +91,14 @@ export function OrderCard({ order }: { order: Order }) {
           </Button>
         )}
         {canReturn && (
-          <Button type="button" variant="outline" size="sm" onClick={() => openConfirm("return")}>
-            Return items
-          </Button>
+          <>
+            <Button type="button" variant="outline" size="sm" onClick={handleBuyAgain}>
+              Buy it again
+            </Button>
+            <Button type="button" variant="outline" size="sm" onClick={() => openConfirm("return")}>
+              Return items
+            </Button>
+          </>
         )}
       </div>
 

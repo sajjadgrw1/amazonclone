@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { helpArticles, searchHelpArticles } from "@/data/help-articles";
 import { Input } from "@/components/ui/Input";
 
 const topics = Array.from(new Set(helpArticles.map((a) => a.topic)));
 
-export default function HelpPage() {
-  const [query, setQuery] = useState("");
-  const [activeTopic, setActiveTopic] = useState<string | null>(null);
+function HelpPageContent() {
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+  const [activeTopic, setActiveTopic] = useState<string | null>(searchParams.get("topic"));
 
   const results = searchHelpArticles(query).filter((a) => !activeTopic || a.topic === activeTopic);
 
@@ -70,5 +72,13 @@ export default function HelpPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function HelpPage() {
+  return (
+    <Suspense fallback={null}>
+      <HelpPageContent />
+    </Suspense>
   );
 }

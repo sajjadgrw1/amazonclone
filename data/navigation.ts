@@ -59,7 +59,7 @@ export const footerColumns: { title: string; items: NavigationItem[] }[] = [
     items: [
       { id: "account", label: "Your Account", href: "/account" },
       { id: "orders-footer", label: "Your Orders", href: "/orders" },
-      { id: "shipping", label: "Shipping Rates & Policies", href: "/help" },
+      { id: "shipping", label: "Shipping Rates & Policies", href: "/help/shipping" },
       { id: "prime-footer", label: "Nuvara+", href: "/prime" },
       { id: "returns-footer", label: "Returns & Replacements", href: "/customer-service" },
       { id: "recalls", label: "Recalls and Product Safety Alerts", href: "/help" },
